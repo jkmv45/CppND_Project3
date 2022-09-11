@@ -11,10 +11,12 @@ GraphNode::~GraphNode()
     //// STUDENT CODE
     ////
 
-    delete _chatBot; 
+    //delete _chatBot; 
+    _chatBot = nullptr;
 
     ////
     //// EOF STUDENT CODE
+    std::cout << "ChatNode Destructor" << std::endl;
 }
 
 void GraphNode::AddToken(std::string token)

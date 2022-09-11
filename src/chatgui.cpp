@@ -25,6 +25,7 @@ bool ChatBotApp::OnInit()
     return true;
 }
 
+
 // wxWidgets FRAME
 ChatBotFrame::ChatBotFrame(const wxString &title) : wxFrame(NULL, wxID_ANY, title, wxDefaultPosition, wxSize(width, height))
 {
@@ -131,10 +132,10 @@ ChatBotPanelDialog::ChatBotPanelDialog(wxWindow *parent, wxWindowID id)
 }
 
 ChatBotPanelDialog::~ChatBotPanelDialog()
-{
+{   
     //// STUDENT CODE
     ////
-
+    
     delete _chatLogic;
 
     ////

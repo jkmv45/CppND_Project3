@@ -4,15 +4,17 @@
 GraphNode::GraphNode(int id)
 {
     _id = id;
+    _chatBot = nullptr;  // ChatBot handle must be initalized to null!!!
 }
 
 GraphNode::~GraphNode()
 {
     //// STUDENT CODE
     ////
-
-    //delete _chatBot; 
-    _chatBot = nullptr;
+    // Make sure only the current node can delete ChatBot
+    if (_chatBot != nullptr){
+        delete _chatBot;
+    }
 
     ////
     //// EOF STUDENT CODE

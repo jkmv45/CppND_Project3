@@ -5,7 +5,7 @@ GraphEdge::GraphEdge(int id)
 {
     _id = id;
 }
-//TEST
+
 GraphEdge::~GraphEdge()
 {
     std::cout << "ChatEdge Destructor" << std::endl;

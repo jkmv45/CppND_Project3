@@ -20,7 +20,7 @@ ChatBot::ChatBot()
 // constructor WITH memory allocation
 ChatBot::ChatBot(std::string filename)
 {
-    std::cout << "ChatBot Constructor" << std::endl;
+    std::cout << "ChatBot Constructor at: " << this << std::endl;
     
     // invalidate data handles
     _chatLogic = nullptr;
@@ -32,7 +32,7 @@ ChatBot::ChatBot(std::string filename)
 
 ChatBot::~ChatBot()
 {
-    std::cout << "ChatBot Destructor" << std::endl;
+    std::cout << "ChatBot Destructor at: " << this << std::endl;
 
     // deallocate heap memory
     if(_image != NULL) // Attention: wxWidgets used NULL and not nullptr
@@ -80,7 +80,9 @@ ChatBot::ChatBot(ChatBot &&source){
     source._rootNode = NULL;
     source._chatLogic = NULL;
     // Annunciate
-    std::cout << "ChatBot Move Constructor" << std::endl;
+    std::cout << "ChatBot Move Constructor from " << &source << " to " << this << std::endl;
+    // Update ChatLogic's Pointer to ChatBot
+    _chatLogic->SetChatbotHandle(this);
 }
 // Move Assignment Operator
 ChatBot& ChatBot::operator=(ChatBot &&source){
@@ -98,7 +100,9 @@ ChatBot& ChatBot::operator=(ChatBot &&source){
     source._rootNode = NULL;
     source._chatLogic = NULL;
     // Annunciate
-    std::cout << "ChatBot Move Assignment Operator" << std::endl;
+    std::cout << "ChatBot Move Assignment Operator from " << &source << " to " << this << std::endl;
+    // Update ChatLogic's Pointer to ChatBot
+    _chatLogic->SetChatbotHandle(this);
     return *this;
 }
 

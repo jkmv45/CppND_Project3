@@ -18,7 +18,7 @@ private:
 
     // data handles (not owned)
     std::vector<GraphEdge *> _parentEdges; // edges to preceding nodes 
-    ChatBot *_chatBot;
+    ChatBot _chatBot;
 
     // proprietary members
     int _id;
@@ -40,14 +40,16 @@ public:
     void AddToken(std::string token); // add answers to list
     void AddEdgeToParentNode(GraphEdge *edge);
     void AddEdgeToChildNode(std::unique_ptr<GraphEdge> edge);
+    
+    // Using pass by reference here to minimize operations.  This method only uses
+    // the move assignment operator.
 
-    //// STUDENT CODE
-    ////
-
-    void MoveChatbotHere(ChatBot *chatbot);
-
-    ////
-    //// EOF STUDENT CODE
+    // If I were to pass the object, I'd have to invoke the move constructor with std::move
+    // when calling the function and then the move assignment operator would be
+    // called inside the function.  If the std::move is not used when calling the
+    // function, then the copy constructor would be invoked.  If it is not used in
+    // the function, then the copy assignment operator would be invoked.
+    void MoveChatbotHere(ChatBot &chatbot);
 
     void MoveChatbotToNewNode(GraphNode *newNode);
 };

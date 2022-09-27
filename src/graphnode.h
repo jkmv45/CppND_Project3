@@ -49,7 +49,7 @@ public:
     // called inside the function.  If the std::move is not used when calling the
     // function, then the copy constructor would be invoked.  If it is not used in
     // the function, then the copy assignment operator would be invoked.
-    void MoveChatbotHere(ChatBot &chatbot);
+    void MoveChatbotHere(ChatBot chatbot);
 
     void MoveChatbotToNewNode(GraphNode *newNode);
 };
